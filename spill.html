@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--ett spil hvor når du trikker på en bloxk så øker scoren med en og blocken flytter seg, og spille skal vare en spesifikk lengde.-->
+    <h3>hwen you click the buton a blue squer wood apear inside the lightgray block, click on the blue block and get points.</h3>
+    <div id="points">Points: 0</div>
+    <button onclick="start()">start spill</button><br><br><br>
+    <div id="box" onclick="boxp()">hei</div>
+    <div id="so"></div>
+
+
+    <script>
+        function start() {
+            var box = document.getElementById("box");
+            var lm = Math.floor(Math.random() * (550 - (-400) + 1)) - 400;
+            var tm = Math.floor(Math.random()*500) + 1;
+            var t = tm + "px";
+            var l = lm +"px";
+            box.style.backgroundColor = "blue";
+            box.style.position = "relative";
+            box.style.left = l;
+            box.style.top = t;
+            box.style.padding = "2%"
+            box.style.margin = "10px 700px 10px 600px";
+           // box.style.border = " 2px solid red";
+        }
+  // Initialize points counter
+  var points = 0;
+        function boxp() {
+            var box = document.getElementById("box");
+            var lm = Math.floor(Math.random() * (550 - (-400) + 1)) - 400;
+            var tm = Math.floor(Math.random()*500) + 1;
+            var t = tm + "px";
+            var l = lm +"px";
+            box.style.left = l;
+            box.style.top = t;
+          // Function to handle box click
+    function handleClick() {
+        // Increment points when the box is clicked
+        points++;
+        // Update the points display
+        document.getElementById("points").innerText = "Points: " + points;
+        // Remove event listener to prevent multiple clicks
+        box.removeEventListener("click", handleClick);
+    }
+
+    // Add event listener for click event
+    box.addEventListener("click", handleClick);
+        }
+    </script>
+    <style>
+        #so {
+            padding: 20%;
+            background-color: lightgray;
+            margin: -100px 100px 0px 100px;
+        }
+    </style>
+
+</body>
+</html>
