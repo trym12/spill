@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--ett spil hvor når du trikker på en bloxk så øker scoren med en og blocken flytter seg, og spille skal vare en spesifikk lengde.-->
+    <h4>hven you click the buton a blue squer wood apear inside the lightgray block, click on the blue block and get points.</h4>
+    <h2>verson:0.2</h2>
+    <div id="points">Points: 0</div>
+    <button onclick="New()">new game</button>
+    <button onclick="start()">start game</button>
+    <button onclick="stop()">stop game</button><br><br>
+    <div id="box" onclick="boxp()">hei</div>
+    <div id="so"></div>
+
+
+    <script>
+        // setter points verdien til null når html siden lasetes in.
+        var points = 0;
+
+        function New() {
+           // Reset points to 0
+        points = 0;
+        document.getElementById("points").innerText = "Points: " + points;
+        start()
+        }
+
+        function start() {
+         
+            var box = document.getElementById("box");
+            box.style.backgroundColor = "blue";//setter stilen på box diven.
+            box.style.position = "relative";
+            box.style.padding = "2%"
+            box.style.margin = "10px 700px 10px 600px";
+            document.getElementById("so").style.top = "-10px";
+           boxm(); //aktiverer boxp function-en.
+        }
+        
+        function boxm() {//skifter posisjon randomly.
+            var box = document.getElementById("box");
+            var lm = Math.floor(Math.random() * (550 - (-400) + 1)) - 400;
+            var tm = Math.floor(Math.random()*450) + 1;
+            var t = tm + "px";
+            var l = lm +"px";
+            box.style.left = l;
+            box.style.top = t;
+
+
+        
+        }
+    
+    
+    function boxp() {
+             // Increment points when the box is clicked
+             points++;
+        // Update the points display
+        document.getElementById("points").innerText = "Points: " + points;
+
+             
+        boxm()
+    }
+    
+      /*  // Function to handle box click
+    function handleClick() {
+        // Increment points when the box is clicked
+        points++;
+        // Update the points display
+        document.getElementById("points").innerText = "Points: " + points;
+        // Remove event listener to prevent multiple clicks
+        box.removeEventListener("click", handleClick);
+
+    }*/
+
+   
+        
+    </script>
+    <style>/*lager spill området*/
+        #so {
+            position: relative;
+            z-index: -1;
+            top: 100px;
+            padding: 20%;
+            background-color: lightgray;
+            margin: -100px 100px 0px 100px;
+        }
+    </style>
+
+</body>
+</html>
