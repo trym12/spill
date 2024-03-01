@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--ett spil hvor når du trikker på en bloxk så øker scoren med en og blocken flytter seg, og spille skal vare en spesifikk lengde.-->
+    <h4>hven you click the buton a blue squer wood apear inside the lightgray block, click on the blue block and get points.</h4>
+    <h2>verson:0.2.1</h2>
+        <div id="points">Points: 0</div>
+        <button onclick="New()">new game</button>
+        <button onclick="start()">start game</button>
+        <button onclick="stop()">stop game</button>
+        <button onclick="end()">end game</button><br><br>
+        <div id="box" onclick="pp()">hei</div>
+        <div id="so" onclick="mp()"></div>
+
+
+    <script>
+        // setter points verdien til null når html siden lasetes in.
+        var points = 0;
+        var isGameOn = false;//holder spilet stoppet.
+
+
+
+        //starter spilet på nytt
+                function New() {
+                    points = 0; // Reset points to 0
+                    isGameOn = true;//starter spilet
+                    var box = document.getElementById("box");//setter var-ene
+                    var so = document.getElementById("so");//setter var-ene
+                    document.getElementById("points").innerText = "Points: " + points;// viser poeng sum.
+                   so.style.top = "-10px";
+                   box.style.display = "block";
+                    boxm();//activerer function-en
+                }
+
+
+
+
+
+        //slutter spilet
+                function end() {
+                    isGameOn = false;//setter spilet på pause
+                    points = 0; // Reset points to 0
+                    document.getElementById("points").innerText = "Points: " + points;// viser poeng sum.
+                    resgame()
+                }
+        //resetter spillet
+                function resgame() {
+                var box = document.getElementById("box");
+                box.style.padding = "";
+                box.style.display = "none";
+                var so = document.getElementById("so");
+                so.style.top = "100px"; // Adjust the top position as needed to position #so correctly
+
+                }
+
+
+
+
+        //starter spilet etter at det har blitt stoppet
+                function start() {
+                    isGameOn = true;
+                }
+        // pauser spilet
+                function stop() {
+                    isGameOn = false;
+                }
+
+
+
+
+
+        //skifter posisjon til den blå boksen randomly.
+                function boxm() {if(isGameOn){
+                    var box = document.getElementById("box");
+                    var lm = Math.floor(Math.random() * (550 - (-400) + 1)) - 400;
+                    var tm = Math.floor(Math.random()*450) + 1;
+                    var t = tm + "px";
+                    var l = lm +"px";
+                    box.style.left = l;
+                    box.style.top = t;
+
+
+                
+                }}
+
+
+            
+     // gir poeng.
+            function pp() { if(isGameOn) {
+
+                // Increment points when the box is clicked
+                points++;
+                // Update the points display
+                document.getElementById("points").innerText = "Points: " + points;// viser poeng sum.
+                boxm();
+            }}
+
+    //tar bort poeng
+    function mp() {
+        points --;
+        document.getElementById("points").innerText = "Points: " + points;// viser poeng sum.
+    }
+     
+   
+        
+    </script>
+    <style>/*lager spill området*/
+        #box {
+        color: transparent;/*gjør son at texten ikke er synlig*/
+            position: relative;
+            display: none;
+            background-Color:#0000ff;
+            padding: 2%;
+            margin:  10px 700px 10px 600px;
+            z-index: 1;
+        }
+
+
+        #so {/*setter utsenet på spill området*/
+            position: relative;
+            z-index: 0;
+            top: 100px;
+            padding: 20%;
+            background-color: lightgray;
+            margin: -100px 100px 0px 100px;
+        }
+    </style>
+
+</body>
+</html>
